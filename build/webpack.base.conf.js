@@ -27,9 +27,13 @@ module.exports = {
       '@': resolve('src'),
     }
   },
+  externals: {
+    'jQuery': 'jQuery',
+    'polyvObject': 'polyvObject',
+  },
   module: {
     rules: [
-      ...(config.dev.useEslint? [{
+      ...(config.dev.useEslint ? [{
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
         enforce: 'pre',
