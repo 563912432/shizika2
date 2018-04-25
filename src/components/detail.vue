@@ -27,12 +27,12 @@
           <audio ref="audio"></audio>
         </div>
         <div class="learn">
-          <img src="../assets/learn.png" @click="learn($event)" tag="1" style="width: 120px;height: 24px">
+          <img src="../assets/learn.png" @click="learn" style="width: 120px;height: 24px">
         </div>
       </div>
     </div>
-    <div class="learn-gif" v-show="!isShow" @click='learn($event)' tag='1'>
-      <img v-if="gif" id="gif" style="width: 100%;height: 60%">
+    <div class="learn-gif" v-show="!isShow" @click='learn'>
+      <img v-if="gif" :src="host + 'Uploads/' + gif" id="gif" style="width: 100%;">
       <span v-else style="color: #ffffff;font-size: 20px">暂无图片</span>
     </div>
   </div>
@@ -128,20 +128,8 @@
       back () {
         this.$router.push({path: '/list/' + this.$route.params.cid})
       },
-      learn (event) {
-        if (event.target.getAttribute('tag') === '1') {
-          this.isShow = !this.isShow
-          let gif = document.getElementById('gif')
-          if (this.isShow) {
-            if (gif) {
-              gif.src = ''
-            }
-          } else {
-            if (this.gif !== null) {
-              gif.src = this.host + 'Uploads/' + this.gif
-            }
-          }
-        }
+      learn () {
+        this.isShow = !this.isShow
       },
       createAudio () {
         if (!this.audio) {
@@ -184,6 +172,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
   }
 
   .detail .content {
@@ -231,7 +220,7 @@
 
   .detail .content .learn {
     position: absolute;
-    bottom: 10px;
+    bottom: 15px;
     text-align: center;
     width: 100%;
     height: auto;
@@ -239,7 +228,12 @@
   }
 
   .learn-gif {
-    flex: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;

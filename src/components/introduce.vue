@@ -23,7 +23,7 @@
       this.player = polyvObject('#showVideo').videoPlayer({
         'width': '100%',
         'height': videoHeight,
-        'vid': 'dbadf91f046627067f6133866e58db5f_d'
+        'vid': 'dbadf91f04bed81ee5431384c86abdb0_d'
       })
       this.player.j2s_resumeVideo()
     },
