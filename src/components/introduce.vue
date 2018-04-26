@@ -10,7 +10,8 @@
     name: 'introduce',
     data () {
       return {
-        player: null
+        player: null,
+        host: '/'
       }
     },
     mounted () {
