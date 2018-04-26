@@ -17,8 +17,9 @@
     mounted () {
       let vid = 'dbadf91f04bed81ee5431384c86abdb0_d'
       this.get(this.host + 'Api/Video/getPolySign/code/' + vid, res => {
-        if (res.status) {
-          let polySign = JSON.parse(res.info)
+        let response = JSON.parse(res)
+        if (response.status) {
+          let polySign = JSON.parse(response.info)
           let videoHeight = 200
           let height = window.screen.height
           let viewHeight = window.innerHeight
